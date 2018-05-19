@@ -1,0 +1,273 @@
+#!/sh/bin/wish8.6
+
+source ui16.tk
+source ui20.tk
+source ui25.tk
+
+
+#/* 
+# @Name: main.tk
+# @Description: This file is to build the menu bar with anylevel of
+#              submenu. The convention for menu creation is as follows
+# 1) "." - represents the top level of menu 
+# 2) "+" - represents that this is a parent for submenu
+# 3) neither "." nor "+" represents the command for menu item
+# 4) command arguments for menu item
+#
+# @Author: Mohad Naushad Ahmed
+# @Email:  NAUSHAD.DLN@GMAIL.COM
+# @Dated:  15-May-2018
+#*/
+
+set menu_b {
+  #/*Root     Menu Name      Parent/Leaf(proc) Argument for Leafnode*/
+  #/*----------------------------------------------------------------*/
+  {"."          "Test"                  "test_proc1"   {}}
+  {"."          "Uidai"                 "+"            {}}
+  {"Uidai"      "Staging"               "+"            {}}
+  {"Staging"    "Authentication"        "+"            {}}
+  {"Authentication"    "Version1.6"    "staging_ver16"        {}}
+  {"Authentication"    "Version2.0"    "dot0"        {}}
+  {"Staging"           "Otp"            "+"            {}}
+  {"Otp"               "Version1.6"    "proc_otp16"   {}}
+  {"Otp"               "Version2.5"    "proc_otp25"   {}}
+  {"Staging"           "eKyc"           "+"            {}}
+  {"eKyc"              "Version1.6"     "proc_ekyc16"  {}}
+  {"eKyc"              "Version2.5"     "proc_ekyc25"  {}}
+  {"Uidai"             "Pre-Production" "+"            {}}
+  {"Pre-Production"    "Authentication" "+"            {}}
+  {"Authentication"    "Version1.6"    "dot6"        {}}
+  {"Authentication"    "Version2.0"    "dot0"        {}}
+  {"Pre-Production"    "Otp"            "+"            {}}
+  {"Otp"               "Version1.6"    "proc_otp16"   {}}
+  {"Otp"               "Version2.5"    "proc_otp25"   {}}
+  {"Pre-Production"    "eKyc"           "+"            {}}
+  {"eKyc"              "Version1.6"    "proc_ekyc16"  {}}
+  {"eKyc"              "Version2.5"    "proc_ekyc25"  {}}
+  {"Uidai"             "Production" "+"            {}}
+  {"Production"    "Authentication" "+"            {}}
+  {"Authentication"    "Version1.6"    "dot6"        {}}
+  {"Authentication"    "Version2.0"    "dot0"        {}}
+  {"Production"    "Otp"            "+"            {}}
+  {"Otp"               "Version1.6"    "proc_otp16"   {}}
+  {"Otp"               "Version2.5"    "proc_otp25"   {}}
+  {"Production"    "eKyc"           "+"            {}}
+  {"eKyc"              "Version1.6"    "proc_ekyc16"  {}}
+  {"eKyc"              "Version2.5"    "proc_ekyc25"  {}}
+
+};#/*Menu bar*/
+
+ 
+proc staging_ver16 {} {
+  init_frame frame
+  staging_auth_form frame "1.6"
+  staging_uses_form frame "1.6"
+  staging_pi_form frame "1.6"
+  staging_pa_form frame "1.6"
+
+};#/*staging_ver16*/
+
+proc staging_pa_form {f_name version} {
+
+  labelframe .staging_pa -text "Pa (Attributes)"
+  grid .staging_pa -sticky news -pady 8 -padx 9 -row 0 -column 3 -in .$f_name
+
+  if {$version == "1.6"} {
+    staging_pa_attr_v16
+  }
+};#/*staging_pa_form*/
+
+
+proc staging_pi_form {f_name version} {
+
+  labelframe .staging_pi -text "Pi (Attributes)"
+  grid .staging_pi -sticky news -pady 8 -padx 9 -row 0 -column 2 -in .$f_name
+
+  if {$version == "1.6"} {
+    staging_pi_attr_v16
+  }
+};#/*staging_pi_form*/
+
+proc staging_auth_form {f_name version} {
+  labelframe .staging_auth -text "Auth (Attributes)"
+  grid .staging_auth -sticky news -pady 8 -padx 9 -in .$f_name
+
+  if {$version == "1.6"} {
+    staging_auth_attr_v16
+
+  } elseif {$version == "2.0"} {
+    staging_auth_attr_v20
+
+  } elseif {$version == "2.5"} {
+    staging_auth_attr_v25
+
+  }
+ 
+};#/*staging_auth_form*/
+
+proc staging_uses_form {f_name version} {
+  labelframe .staging_uses -text "Uses (Attributes)"
+  grid .staging_uses -sticky news -column 1 -row 0 -pady 8 -padx 9 -in .$f_name
+
+  if {$version == "1.6"} {
+    staging_uses_attr_v16
+  }
+
+};#/*staging_uses_form*/
+
+# /**
+# @brief This function creates the canvas with vertical and horizontal 
+# scrollbars and attached themselves to frame.
+#
+# @pram f_name
+# @return none
+# @author NAUSHAD.DLN@GMAIL.COM
+# */
+proc init_frame {f_name} {
+  frame .$f_name
+  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" 
+  scrollbar .xscroll -orient horizontal -command ".canvas xview"
+  scrollbar .yscroll -orient vertical -command ".canvas yview"
+
+  .canvas create window 0 0 -anchor nw -window .$f_name
+
+  grid .canvas - .yscroll -sticky news -pady 4 -padx 2
+  grid .xscroll - x -sticky news
+  grid rowconfigure . 0 -weight 1
+  grid columnconfigure . 0 -weight 1
+
+  bind .$f_name <Configure> {
+    .canvas configure -scrollregion [.canvas bbox all]
+  }
+
+};#/*init_frame*/
+
+# /**
+# @brief
+# @pram
+# @return
+# @author
+# */
+proc get_parent_path path {
+
+  set len [llength $path]
+  set tmp_path {}
+
+  for {set idx 1} {$idx < $len} {incr idx} {
+    set tmp_var [string tolower [lindex $path [expr {$len - $idx}]]]
+    set tmp_path [concat $tmp_path.$tmp_var]
+  }
+
+  return $tmp_path
+};#/*get_parent_path*/
+
+#  @brief:
+#  @pram:
+#  @return:
+#  
+proc build_widget_path path {
+
+  set len [llength $path]
+  set tmp_path {}
+
+  for {set idx 0} {$idx < $len} {incr idx} {
+    set tmp_var [string tolower [lindex $path [expr {$len - $idx - 1}]]]
+    set tmp_path [concat $tmp_path.$tmp_var]
+  }
+
+  return $tmp_path
+};#/*build_widget_path*/
+
+#  @brief:
+#  @pram:
+#  @return:
+#  
+proc get_offset {root parent} {
+
+ set idx 0
+  foreach  p_elem $parent {
+    if {$root != [lindex $parent $idx]} {
+      set idx [expr $idx + 1]
+    } else {
+      break
+    }
+  }
+
+  return $idx
+};#/*get_offset*/
+
+#  @brief:
+#  @pram:
+#  @return:
+#  
+proc del_elem {offset parent} {
+
+  for {set idx 0} {$idx < $offset} {incr idx} {
+    set parent [lreplace $parent 0 0]
+  }
+
+  return $parent
+};#/*del_elem*/
+
+#  @brief:
+#  @pram:
+#  @return:
+#  
+proc build_menu {menu_b menu_bar} {
+
+  set parent [list] 
+
+  foreach elem $menu_b {
+    set root [lindex $elem 0]
+    set lbl [lindex $elem 1]
+    set cmd [lindex $elem 2]
+    set arg [lindex $elem 3]
+
+    if {$cmd == "+"} {
+      #submenu 
+      if {"." == $root} {
+        #Delete the parent list
+        set parent [list]
+        set sep 1
+      } else {
+        set sep 0
+      }
+      #/*pop up the parent*/ 
+      if {$root != [lindex $parent 0]} {
+        set offset [get_offset $root $parent]
+        set parent [del_elem $offset $parent]
+      }
+      #/*push into parent*/
+      set parent [linsert $parent 0 $lbl]
+      set path [build_widget_path $parent]
+
+      if {[llength $parent] > 1} {
+        set parent_path [get_parent_path $parent]
+        eval $menu_bar$parent_path add cascade -menu [menu $menu_bar$path -tearoff $sep] -label $lbl
+      } else {
+        eval $menu_bar add cascade -menu [menu $menu_bar$path -tearoff $sep] -label $lbl
+      }
+    } elseif {$root == "."} {
+      #root element of menubar
+      eval $menu_bar add command -command $cmd $arg -label $lbl
+
+    } elseif {[lindex $parent 0] == $root} {
+      #sub-menu
+      set path [build_widget_path $parent]
+      eval $menu_bar$path add command -command $cmd $arg -label $lbl
+
+    } elseif {[llength $parent] > 0} {
+      #/*pop up the parent*/ 
+      set offset [get_offset $root $parent] 
+      set parent [del_elem $offset $parent]
+      set path [build_widget_path $parent]
+      eval $menu_bar$path add command -command $cmd $arg -label $lbl
+    }
+  }
+};#/*build_menu_*/
+
+
+menu .m
+. configure -menu .m
+
+build_menu $menu_b .m
