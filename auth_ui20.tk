@@ -10,7 +10,7 @@
 # @dated  15-May-2018
 #*/
 
-proc staging_auth_attr_v16 {} {
+proc staging_auth_attr_v20 {} {
 
   label .staging_auth.uid -text "uid..........."
   label .staging_auth.rc  -text "rc............"
@@ -36,9 +36,9 @@ proc staging_auth_attr_v16 {} {
   grid .staging_auth.ver .staging_auth.vere -pady 2 -padx 4 -sticky news
   grid .staging_auth.lk  .staging_auth.lke  -pady 2 -padx 4 -sticky news
  
-};#/*staging_auth_attr_v16*/
+};#/*staging_auth_attr_v20*/
 
-proc staging_uses_attr_v16 {} {
+proc staging_uses_attr_v20 {} {
 
   label .staging_uses.pi  -text "Pi............"
   label .staging_uses.pa  -text "Pa............"
@@ -64,9 +64,9 @@ proc staging_uses_attr_v16 {} {
   grid .staging_uses.pin .staging_uses.pinc  -pady 2 -padx 4 -sticky w
   grid .staging_uses.otp .staging_uses.otpc  -pady 2 -padx 4 -sticky w
 
-};#/*staging_uses_attr_v16*/
+};#/*staging_uses_attr_v20*/
 
-proc staging_pa_attr_v16 {} {
+proc staging_pa_attr_v20 {} {
 
   label .staging_pa.ms        -text "Ms............"
   label .staging_pa.co        -text "Co............"
@@ -110,9 +110,9 @@ proc staging_pa_attr_v16 {} {
   grid .staging_pa.pc       .staging_pa.pce       -pady 2 -padx 4 -sticky news
   grid .staging_pa.po       .staging_pa.poe       -pady 2 -padx 4 -sticky news
 
-};#/*staging_pa_attr_v16*/
+};#/*staging_pa_attr_v20*/
 
-proc staging_pi_attr_v16 {} {
+proc staging_pi_attr_v20 {} {
 
   label .staging_pi.ms     -text "Ms............"
   label .staging_pi.mv     -text "Mv............"
@@ -150,6 +150,6 @@ proc staging_pi_attr_v16 {} {
   grid .staging_pi.phone  .staging_pi.phonee  -pady 2 -padx 4 -sticky news
   grid .staging_pi.email  .staging_pi.emaile  -pady 2 -padx 4 -sticky news
 
-};#/*staging_pi_attr_v16*/
+};#/*staging_pi_attr_v20*/
 
 
