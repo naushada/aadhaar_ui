@@ -1,4 +1,4 @@
-#!/usr/bin/wish8.6
+#!/usr/bin/wish8.6 -f
 
 source auth_ui16.tk
 source auth_ui20.tk
@@ -186,7 +186,7 @@ proc btn_widget {f_name} {
   button .submit -text "Submit" -command submit_contents
   grid .clear .default .submit -row 4 -pady 5 -padx 5 -in .lbl_frame
   grid .lbl_frame -in .btn_frame
-  grid .btn_frame -in .$f_name -column 0 -row 2 -pady 2
+  grid .btn_frame -sticky w -pady 8 -padx 9 -in .$f_name 
     
 };#/*btn_widget*/
 
