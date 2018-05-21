@@ -64,6 +64,7 @@ proc Exit {arg} {
 };#/**/
  
 proc staging_auth {version} {
+  toplevel .wm
   init_frame frame
   staging_auth_form frame $version 
   staging_uses_form frame $version
@@ -129,7 +130,7 @@ proc staging_pv_form {f_name version} {
 };#/*staging_pv_form*/
 
 proc staging_auth_form {f_name version} {
-  labelframe .staging_auth -text "Auth (Attributes)"
+  labelframe .staging_auth -text "Auth* (Attributes)"
   grid .staging_auth -sticky news -row 0 -column 0 -pady 8 -padx 9 -in .$f_name
 
   if {$version == "1.6"} {
@@ -146,7 +147,7 @@ proc staging_auth_form {f_name version} {
 };#/*staging_auth_form*/
 
 proc staging_uses_form {f_name version} {
-  labelframe .staging_uses -text "Uses (Attributes)"
+  labelframe .staging_uses -text "Uses* (Attributes)"
   grid .staging_uses -sticky news -row 0 -column 1 -row 0 -pady 8 -padx 9 -in .$f_name
 
   if {$version == "1.6"} {
@@ -166,7 +167,7 @@ proc staging_tkn_form {f_name version} {
 };#/*staging_tkn_form*/
 
 proc staging_meta_form {f_name version} {
-  labelframe .staging_meta -text "Meta (Attributes)"
+  labelframe .staging_meta -text "Meta* (Attributes)"
   grid .staging_meta -sticky news -column 3 -row 0 -pady 8 -padx 9 -in .$f_name
 
   if {$version == "1.6"} {
