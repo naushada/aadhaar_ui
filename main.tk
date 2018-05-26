@@ -75,7 +75,8 @@ proc staging_auth {version} {
   staging_pfa_form  container $version
   staging_bio_form  container $version
   staging_pv_form   container $version
-  btn_widget container
+  staging_demo_form container $version
+  btn_widget container staging $version
 
 };#/*staging_auth*/
 
@@ -129,6 +130,17 @@ proc staging_pv_form {f_name version} {
   }
 };#/*staging_pv_form*/
 
+proc staging_demo_form {f_name version} {
+
+  labelframe .staging_demo -text "Demo (Attributes)"
+  grid .staging_demo -sticky news -pady 8 -padx 9 -row 3 -column 0 -in .$f_name
+
+  if {$version == "1.6"} {
+    staging_demo_attr_v16
+  }
+};#/*staging_demo_form*/
+
+
 proc staging_auth_form {f_name version} {
   labelframe .staging_auth -text "Auth* (Attributes)"
   grid .staging_auth -sticky news -row 0 -column 0 -pady 8 -padx 9 -in .$f_name
@@ -176,15 +188,51 @@ proc staging_meta_form {f_name version} {
 
 };#/*staging_meta_form*/
 
-proc btn_widget {f_name} {
+proc default_contents {type version} {
+
+  if {"staging" == $type} {
+
+    if {"1.6" == $version} {
+      puts "Staging Version $version"       
+    } elseif {"2.0" == $version} { 
+      
+    }
+  }
+};#default_contents
+
+proc clear_contents {type version} {
+
+  if {"staging" == $type} {
+
+    if {"1.6" == $version} {
+      puts "Staging Version $version"       
+    } elseif {"2.0" == $version} { 
+      
+    }
+  }
+};#clear_contents
+
+proc submit_contents {type version} {
+
+  if {"staging" == $type} {
+
+    if {"1.6" == $version} {
+      puts "Staging Version $version"       
+    } elseif {"2.0" == $version} { 
+      
+    }
+  }
+};#submit_contents
+
+proc btn_widget {f_name type version} {
 
   frame .btn_frame
   labelframe .lbl_frame -text "Command"
   #grid .lbl_frame -sticky news -column 0 -row 5 -padx 9 -pady 8 -in .btn_frame
 
-  button .clear -text "Clear" -command clear_contents
-  button .default -text "Set Default Value" -command default_contents
-  button .submit -text "Submit" -command submit_contents
+  button .clear -text "Clear" -command "clear_contents $type $version"
+  button .default -text "Set Default Value" -command "default_contents $type $version"
+  button .submit -text "Submit" -command "submit_contents $type $version"
   grid .clear .default .submit -row 4 -pady 5 -padx 5 -in .lbl_frame
   grid .lbl_frame -in .btn_frame
   grid .btn_frame -sticky w -pady 8 -padx 9 -in .$f_name 

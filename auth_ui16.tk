@@ -1,3 +1,4 @@
+package require BWidget
 
 #/* 
 # @name ui16.tk
@@ -10,16 +11,30 @@
 # @dated  15-May-2018
 #*/
 
+set staging_wi_pname_v16 {
+  {auth.uide auth.tide auth.txne auth.ace auth.sae auth.vere auth.lke}
+  {uses.pic uses.pac uses.pfac uses.bioc uses.btc uses.pinc uses.otpc}
+  {tkn.typee tkn.valuee}
+  {meta.udce meta.fdce meta.idce meta.pipe meta.lote meta.love}
+  {pi.mse pi.mve pi.namee pi.lnamee pi.lmve pi.gendere pi.dobe pi.agee pi.phonee pi.emaile}
+  {pa.mse pa.coe pa.housee pa.streete pa.lme pa.loce pa.vtce pa.subdiste pa.diste pa.statee pa.pce pa.poe}
+  {pfa.mse pfa.mve pfa.ave pfa.lave pfa.lmve}
+  {bio.typee bio.poshe}
+  {pv.pine pv.otpe}
+  {demo.lange}
+}
+
+
 proc staging_auth_attr_v16 {} {
 
   frame .auth
-  label .auth.uid  -text "uid..........."
-  label .auth.tid  -text "tid..........."
-  label .auth.txn  -text "txn..........."
-  label .auth.ac   -text "ac............"
-  label .auth.sa   -text "sa............"
-  label .auth.ver  -text "ver..........."
-  label .auth.lk   -text "lk............"
+  label .auth.uid  -text "uid............"
+  label .auth.tid  -text "tid............"
+  label .auth.txn  -text "txn............"
+  label .auth.ac   -text "ac............."
+  label .auth.sa   -text "sa............."
+  label .auth.ver  -text "ver............"
+  label .auth.lk   -text "lk............."
  
   entry .auth.uide  -width 30
   entry .auth.tide  -width 30 
@@ -43,13 +58,13 @@ proc staging_auth_attr_v16 {} {
 proc staging_uses_attr_v16 {} {
 
   frame .uses
-  label .uses.pi  -text "Pi............"
-  label .uses.pa  -text "Pa............"
-  label .uses.pfa -text "Pfa..........."
-  label .uses.bio -text "Bio..........."
-  label .uses.bt  -text "BT............"
-  label .uses.pin -text "Pin..........."
-  label .uses.otp -text "Otp..........."
+  label .uses.pi  -text "Pi............."
+  label .uses.pa  -text "Pa............."
+  label .uses.pfa -text "Pfa............"
+  label .uses.bio -text "Bio............"
+  label .uses.bt  -text "BT............."
+  label .uses.pin -text "Pin............"
+  label .uses.otp -text "Otp............"
  
   checkbutton .uses.pic
   checkbutton .uses.pac
@@ -59,13 +74,13 @@ proc staging_uses_attr_v16 {} {
   checkbutton .uses.pinc
   checkbutton .uses.otpc
  
-  grid .uses.pi  .uses.pic   -pady 2 -padx 4 -sticky w
-  grid .uses.pa  .uses.pac   -pady 2 -padx 4 -sticky w
-  grid .uses.pfa .uses.pfac  -pady 2 -padx 4 -sticky w
-  grid .uses.bio .uses.bioc  -pady 2 -padx 4 -sticky w
-  grid .uses.bt  .uses.btc   -pady 2 -padx 4 -sticky w
-  grid .uses.pin .uses.pinc  -pady 2 -padx 4 -sticky w
-  grid .uses.otp .uses.otpc  -pady 2 -padx 4 -sticky w
+  grid .uses.pi  .uses.pic   -pady 2 -padx 4 -sticky news 
+  grid .uses.pa  .uses.pac   -pady 2 -padx 4 -sticky news
+  grid .uses.pfa .uses.pfac  -pady 2 -padx 4 -sticky news
+  grid .uses.bio .uses.bioc  -pady 2 -padx 4 -sticky news
+  grid .uses.bt  .uses.btc   -pady 2 -padx 4 -sticky news
+  grid .uses.pin .uses.pinc  -pady 2 -padx 4 -sticky news
+  grid .uses.otp .uses.otpc  -pady 2 -padx 4 -sticky news
 
   grid .uses -in .staging_uses
 };#/*staging_uses_attr_v16*/
@@ -73,14 +88,14 @@ proc staging_uses_attr_v16 {} {
 proc staging_tkn_attr_v16 {} {
 
   frame .tkn
-  label .tkn.type  -text "Type*........."
-  label .tkn.value -text "Value*........"
+  label .tkn.type  -text "Type*.........."
+  label .tkn.value -text "Value*........."
  
-  entry .tkn.typee
-  entry .tkn.valuee
+  entry .tkn.typee -width 30
+  entry .tkn.valuee -width 30
  
-  grid .tkn.type  .tkn.typee  -pady 2 -padx 4 -sticky w
-  grid .tkn.value .tkn.valuee -pady 2 -padx 4 -sticky w
+  grid .tkn.type  .tkn.typee  -pady 2 -padx 4 -sticky news
+  grid .tkn.value .tkn.valuee -pady 2 -padx 4 -sticky news
 
   grid .tkn -in .staging_tkn
 };#/*staging_tkn_attr_v16*/
@@ -88,26 +103,26 @@ proc staging_tkn_attr_v16 {} {
 proc staging_meta_attr_v16 {} {
 
   frame .meta
-  label .meta.udc  -text "Udc*.........."
-  label .meta.fdc  -text "Fdc*.........."
-  label .meta.idc  -text "Idc*.........."
-  label .meta.pip  -text "Pip*.........."
-  label .meta.lot  -text "Lot*.........."
-  label .meta.lov  -text "Lov*.........."
+  label .meta.udc  -text "Udc*..........."
+  label .meta.fdc  -text "Fdc*..........."
+  label .meta.idc  -text "Idc*..........."
+  label .meta.pip  -text "Pip*..........."
+  label .meta.lot  -text "Lot*..........."
+  label .meta.lov  -text "Lov*..........."
  
-  entry .meta.udce
-  entry .meta.fdce
-  entry .meta.idce
-  entry .meta.pipe
-  entry .meta.lote
-  entry .meta.love
+  entry .meta.udce -width 30
+  ComboBox .meta.fdce -width 30 -values {NC NA} -text "NC"
+  entry .meta.idce -width 30
+  entry .meta.pipe -width 30
+  ComboBox .meta.lote -width 30 -values {G P} -text "P"
+  entry .meta.love -width 30
  
-  grid .meta.udc  .meta.udce  -pady 2 -padx 4 -sticky w
-  grid .meta.fdc  .meta.fdce  -pady 2 -padx 4 -sticky w
-  grid .meta.idc  .meta.idce  -pady 2 -padx 4 -sticky w
-  grid .meta.pip  .meta.pipe  -pady 2 -padx 4 -sticky w
-  grid .meta.lot  .meta.lote  -pady 2 -padx 4 -sticky w
-  grid .meta.lov  .meta.love  -pady 2 -padx 4 -sticky w
+  grid .meta.udc  .meta.udce  -pady 2 -padx 4 -sticky news
+  grid .meta.fdc  .meta.fdce  -pady 2 -padx 4 -sticky news
+  grid .meta.idc  .meta.idce  -pady 2 -padx 4 -sticky news
+  grid .meta.pip  .meta.pipe  -pady 2 -padx 4 -sticky news
+  grid .meta.lot  .meta.lote  -pady 2 -padx 4 -sticky news
+  grid .meta.lov  .meta.love  -pady 2 -padx 4 -sticky news
 
   grid .meta -in .staging_meta
 };#/*staging_meta_attr_v16*/
@@ -115,26 +130,26 @@ proc staging_meta_attr_v16 {} {
 proc staging_pi_attr_v16 {} {
 
   frame .pi
-  label .pi.ms     -text "Ms............"
-  label .pi.mv     -text "Mv............"
-  label .pi.name   -text "Name.........."
-  label .pi.lname  -text "Lname........."
-  label .pi.lmv    -text "Lmv..........."
-  label .pi.gender -text "Gender........"
-  label .pi.dob    -text "Dob..........."
-  label .pi.dobt   -text "Dobt.........."
-  label .pi.age    -text "Age..........."
-  label .pi.phone  -text "Phone........."
-  label .pi.email  -text "E-mail........"
+  label .pi.ms     -text "Ms............."
+  label .pi.mv     -text "Mv............."
+  label .pi.name   -text "Name..........."
+  label .pi.lname  -text "Lname.........."
+  label .pi.lmv    -text "Lmv............"
+  label .pi.gender -text "Gender........."
+  label .pi.dob    -text "Dob............"
+  label .pi.dobt   -text "Dobt..........."
+  label .pi.age    -text "Age............"
+  label .pi.phone  -text "Phone.........."
+  label .pi.email  -text "E-mail........."
  
-  entry .pi.mse     -width 30
-  entry .pi.mve     -width 30 
+  ComboBox .pi.mse  -width 30 -values {P E} -text "E"
+  entry .pi.mve     -width 30 -text "100"
   entry .pi.namee   -width 30
   entry .pi.lnamee  -width 30
   entry .pi.lmve    -width 30
-  entry .pi.gendere -width 30
+  ComboBox .pi.gendere -width 30 -values {M F T} -text "M"
   entry .pi.dobe    -width 30
-  entry .pi.dobte   -width 30
+  ComboBox .pi.dobte -width 30 -values {D V A} -text "V"
   entry .pi.agee    -width 30
   entry .pi.phonee  -width 30
   entry .pi.emaile  -width 30
@@ -156,18 +171,18 @@ proc staging_pi_attr_v16 {} {
 
 proc staging_pa_attr_v16 {} {
   frame .pa
-  label .pa.ms        -text "Ms............"
-  label .pa.co        -text "Co............"
-  label .pa.house     -text "House........."
-  label .pa.street    -text "Street........"
-  label .pa.lm        -text "Lm............"
-  label .pa.loc       -text "Loc..........."
-  label .pa.vtc       -text "Vtc..........."
-  label .pa.subdist   -text "Subdist......."
-  label .pa.dist      -text "Dist.........."
-  label .pa.state     -text "State........."
-  label .pa.pc        -text "Pc............"
-  label .pa.po        -text "Po............"
+  label .pa.ms        -text "Ms............."
+  label .pa.co        -text "Co............."
+  label .pa.house     -text "House.........."
+  label .pa.street    -text "Street........."
+  label .pa.lm        -text "Lm............."
+  label .pa.loc       -text "Loc............"
+  label .pa.vtc       -text "Vtc............"
+  label .pa.subdist   -text "Subdist........"
+  label .pa.dist      -text "Dist..........."
+  label .pa.state     -text "State.........."
+  label .pa.pc        -text "Pc............."
+  label .pa.po        -text "Po............."
  
   entry .pa.mse      -width 30
   entry .pa.coe      -width 30 
@@ -200,13 +215,14 @@ proc staging_pa_attr_v16 {} {
 
 proc staging_pfa_attr_v16 {} {
   frame .pfa
-  label .pfa.ms        -text "Ms............"
-  label .pfa.mv        -text "Mv............"
-  label .pfa.av        -text "Av............"
-  label .pfa.lav       -text "Lav..........."
-  label .pfa.lmv       -text "Lmv..........."
+  label .pfa.ms        -text "Ms............."
+  label .pfa.mv        -text "Mv............."
+  label .pfa.av        -text "Av............."
+  label .pfa.lav       -text "Lav............"
+  label .pfa.lmv       -text "Lmv............"
  
-  entry .pfa.mse   -width 30
+  #entry .pfa.mse   -width 30
+  ComboBox .pfa.mse   -width 30 -values {E P} -text "E"
   entry .pfa.mve   -width 30 
   entry .pfa.ave   -width 30
   entry .pfa.lave  -width 30
@@ -224,11 +240,15 @@ proc staging_pfa_attr_v16 {} {
 proc staging_bio_attr_v16 {} {
 
   frame .bio
-  label .bio.type  -text "Type............"
-  label .bio.posh  -text "Posh............"
+  label .bio.type  -text "Type..........."
+  label .bio.posh  -text "Posh..........."
  
-  entry .bio.typee -width 30
-  entry .bio.poshe -width 30 
+  ComboBox .bio.typee -width 30 -values {FMR FIR IIR}
+  #entry .bio.poshe -width 30 
+  ComboBox .bio.poshe -width 30 -values {LEFT_IRIS \
+                                         RIGHT_IRIS LEFT_INDEX LEFT_LITTLE LEFT_MIDDLE LEFT_RING \
+                                         LEFT_THUMB RIGHT_INDEX RIGHT_LITTLE RIGHT_MIDDLE \
+                                         RIGHT_RING RIGHT_THUMB UNKNOWN} -text "UNKNOWN"
  
   grid .bio.type  .bio.typee -pady 2 -padx 4 -sticky news
   grid .bio.posh  .bio.poshe -pady 2 -padx 4 -sticky news
@@ -250,3 +270,50 @@ proc staging_pv_attr_v16 {} {
 
 };#/*staging_pv_attr_v16*/
 
+proc staging_demo_attr_v16 {} {
+
+  set lang_opt {Assamese
+                Bengali
+                Gujarati
+                Hindi
+                Kannada
+                Malayalam
+                Manipuri
+                Marathi
+                Oriya
+                Punjabi
+                Tamil
+                Telugu
+                Urdu }
+
+  frame .demo
+  label .demo.lang  -text "Language......."
+ 
+  #entry .demo.lange -width 30
+  ComboBox .demo.lange -values $lang_opt -modifycmd {staging_demo_lang_get .demo.lange} -width 30 
+ 
+  grid .demo.lang  .demo.lange    -pady 2 -padx 4 -sticky news
+  grid .demo -in .staging_demo
+
+};#/*staging_demo_attr_v16*/
+
+proc staging_demo_lang_get {p_name} {
+
+  set lang_opt { {Assamese   01}
+                 {Bengali    02}
+                 {Gujarati   05}
+                 {Hindi      06}
+                 {Kannada    07}
+                 {Malayalam  11}
+                 {Manipuri   12}
+                 {Marathi    13}
+                 {Oriya      15}
+                 {Punjabi    16}
+                 {Tamil      20}
+                 {Telugu     21}
+                 {Urdu       22}
+               }
+
+  set val [$p_name get] 
+  puts "Value is $val"
+};#/*staging_demo_lang_get*/
