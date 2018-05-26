@@ -64,25 +64,25 @@ proc Exit {arg} {
 };#/**/
  
 proc staging_auth {version} {
-  toplevel .wm
-  init_frame frame
-  staging_auth_form frame $version 
-  staging_uses_form frame $version
-  staging_tkn_form frame $version
-  staging_meta_form frame $version
-  staging_pi_form frame $version
-  staging_pa_form frame $version
-  staging_pfa_form frame $version
-  staging_bio_form frame $version
-  staging_pv_form frame $version
-  btn_widget frame
+
+  init_frame container 
+  staging_auth_form container $version 
+  staging_uses_form container $version
+  staging_tkn_form  container $version
+  staging_meta_form container $version
+  staging_pi_form   container $version
+  staging_pa_form   container $version
+  staging_pfa_form  container $version
+  staging_bio_form  container $version
+  staging_pv_form   container $version
+  btn_widget container
 
 };#/*staging_auth*/
 
 proc staging_pi_form {f_name version} {
 
   labelframe .staging_pi -text "Pi (Attributes)"
-  grid .staging_pi -sticky news -pady 8 -padx 9 -row 1 -column 0 -in .$f_name
+  grid .staging_pi -sticky news -pady 8 -padx 9 -row 1 -column 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pi_attr_v16
@@ -92,7 +92,7 @@ proc staging_pi_form {f_name version} {
 proc staging_pa_form {f_name version} {
 
   labelframe .staging_pa -text "Pa (Attributes)"
-  grid .staging_pa -sticky news -pady 8 -padx 9 -row 1 -column 1 -in .$f_name
+  grid .staging_pa -sticky news -pady 8 -padx 9 -row 1 -column 2 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pa_attr_v16
@@ -102,7 +102,7 @@ proc staging_pa_form {f_name version} {
 proc staging_pfa_form {f_name version} {
 
   labelframe .staging_pfa -text "Pfa (Attributes)"
-  grid .staging_pfa -sticky news -pady 8 -padx 9 -row 1 -column 2 -in .$f_name
+  grid .staging_pfa -sticky news -pady 8 -padx 9 -row 2 -column 0 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pfa_attr_v16
@@ -112,7 +112,7 @@ proc staging_pfa_form {f_name version} {
 proc staging_bio_form {f_name version} {
 
   labelframe .staging_bio -text "Bio (Attributes)"
-  grid .staging_bio -sticky news -pady 8 -padx 9 -row 1 -column 3 -in .$f_name
+  grid .staging_bio -sticky news -pady 8 -padx 9 -row 2 -column 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_bio_attr_v16
@@ -122,7 +122,7 @@ proc staging_bio_form {f_name version} {
 proc staging_pv_form {f_name version} {
 
   labelframe .staging_pv -text "Pv (Attributes)"
-  grid .staging_pv -sticky news -pady 8 -padx 9 -row 1 -column 4 -in .$f_name
+  grid .staging_pv -sticky news -pady 8 -padx 9 -row 2 -column 2 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pv_attr_v16
@@ -168,7 +168,7 @@ proc staging_tkn_form {f_name version} {
 
 proc staging_meta_form {f_name version} {
   labelframe .staging_meta -text "Meta* (Attributes)"
-  grid .staging_meta -sticky news -column 3 -row 0 -pady 8 -padx 9 -in .$f_name
+  grid .staging_meta -sticky news -column 0 -row 1 -pady 8 -padx 9 -in .$f_name
 
   if {$version == "1.6"} {
     staging_meta_attr_v16
@@ -201,7 +201,7 @@ proc btn_widget {f_name} {
 # */
 proc init_frame {f_name} {
   frame .$f_name
-  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" -width 800 -height 700 
+  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" -width 1100 -height 750 
   scrollbar .xscroll -orient horizontal -command ".canvas xview"
   scrollbar .yscroll -orient vertical -command ".canvas yview"
 
@@ -344,7 +344,7 @@ proc build_menu {menu_b menu_bar} {
   }
 };#/*build_menu_*/
 
-
+wm title . "Balaagh"
 menu .m
-. configure -menu .m -height 500 -width 1000
+. configure -menu .m -height 500 -width 1200
 build_menu $menu_b .m

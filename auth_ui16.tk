@@ -12,226 +12,241 @@
 
 proc staging_auth_attr_v16 {} {
 
-  label .staging_auth.uid  -text "uid..........."
-  label .staging_auth.tid  -text "tid..........."
-  label .staging_auth.txn  -text "txn..........."
-  label .staging_auth.ac   -text "ac............"
-  label .staging_auth.sa   -text "sa............"
-  label .staging_auth.ver  -text "ver..........."
-  label .staging_auth.lk   -text "lk............"
+  frame .auth
+  label .auth.uid  -text "uid..........."
+  label .auth.tid  -text "tid..........."
+  label .auth.txn  -text "txn..........."
+  label .auth.ac   -text "ac............"
+  label .auth.sa   -text "sa............"
+  label .auth.ver  -text "ver..........."
+  label .auth.lk   -text "lk............"
  
-  entry .staging_auth.uide  -width 30
-  entry .staging_auth.tide  -width 30 
-  entry .staging_auth.txne  -width 30
-  entry .staging_auth.ace   -width 30
-  entry .staging_auth.sae   -width 30
-  entry .staging_auth.vere  -width 30
-  entry .staging_auth.lke   -width 30
+  entry .auth.uide  -width 30
+  entry .auth.tide  -width 30 
+  entry .auth.txne  -width 30
+  entry .auth.ace   -width 30
+  entry .auth.sae   -width 30
+  entry .auth.vere  -width 30
+  entry .auth.lke   -width 30
  
-  grid .staging_auth.uid  .staging_auth.uide  -pady 2 -padx 4 -sticky news
-  grid .staging_auth.tid  .staging_auth.tide  -pady 2 -padx 4 -sticky news
-  grid .staging_auth.txn  .staging_auth.txne  -pady 2 -padx 4 -sticky news
-  grid .staging_auth.ac   .staging_auth.ace   -pady 2 -padx 4 -sticky news
-  grid .staging_auth.sa   .staging_auth.sae   -pady 2 -padx 4 -sticky news
-  grid .staging_auth.ver  .staging_auth.vere  -pady 2 -padx 4 -sticky news
-  grid .staging_auth.lk   .staging_auth.lke   -pady 2 -padx 4 -sticky news
+  grid .auth.uid  .auth.uide  -pady 2 -padx 4 -sticky news
+  grid .auth.tid  .auth.tide  -pady 2 -padx 4 -sticky news
+  grid .auth.txn  .auth.txne  -pady 2 -padx 4 -sticky news
+  grid .auth.ac   .auth.ace   -pady 2 -padx 4 -sticky news
+  grid .auth.sa   .auth.sae   -pady 2 -padx 4 -sticky news
+  grid .auth.ver  .auth.vere  -pady 2 -padx 4 -sticky news
+  grid .auth.lk   .auth.lke   -pady 2 -padx 4 -sticky news
  
+  grid .auth -in .staging_auth
 };#/*staging_auth_attr_v16*/
 
 proc staging_uses_attr_v16 {} {
 
-  label .staging_uses.pi  -text "Pi............"
-  label .staging_uses.pa  -text "Pa............"
-  label .staging_uses.pfa -text "Pfa..........."
-  label .staging_uses.bio -text "Bio..........."
-  label .staging_uses.bt  -text "BT............"
-  label .staging_uses.pin -text "Pin..........."
-  label .staging_uses.otp -text "Otp..........."
+  frame .uses
+  label .uses.pi  -text "Pi............"
+  label .uses.pa  -text "Pa............"
+  label .uses.pfa -text "Pfa..........."
+  label .uses.bio -text "Bio..........."
+  label .uses.bt  -text "BT............"
+  label .uses.pin -text "Pin..........."
+  label .uses.otp -text "Otp..........."
  
-  checkbutton .staging_uses.pic
-  checkbutton .staging_uses.pac
-  checkbutton .staging_uses.pfac
-  checkbutton .staging_uses.bioc
-  checkbutton .staging_uses.btc
-  checkbutton .staging_uses.pinc
-  checkbutton .staging_uses.otpc
+  checkbutton .uses.pic
+  checkbutton .uses.pac
+  checkbutton .uses.pfac
+  checkbutton .uses.bioc
+  checkbutton .uses.btc
+  checkbutton .uses.pinc
+  checkbutton .uses.otpc
  
-  grid .staging_uses.pi  .staging_uses.pic   -pady 2 -padx 4 -sticky w
-  grid .staging_uses.pa  .staging_uses.pac   -pady 2 -padx 4 -sticky w
-  grid .staging_uses.pfa .staging_uses.pfac  -pady 2 -padx 4 -sticky w
-  grid .staging_uses.bio .staging_uses.bioc  -pady 2 -padx 4 -sticky w
-  grid .staging_uses.bt  .staging_uses.btc   -pady 2 -padx 4 -sticky w
-  grid .staging_uses.pin .staging_uses.pinc  -pady 2 -padx 4 -sticky w
-  grid .staging_uses.otp .staging_uses.otpc  -pady 2 -padx 4 -sticky w
+  grid .uses.pi  .uses.pic   -pady 2 -padx 4 -sticky w
+  grid .uses.pa  .uses.pac   -pady 2 -padx 4 -sticky w
+  grid .uses.pfa .uses.pfac  -pady 2 -padx 4 -sticky w
+  grid .uses.bio .uses.bioc  -pady 2 -padx 4 -sticky w
+  grid .uses.bt  .uses.btc   -pady 2 -padx 4 -sticky w
+  grid .uses.pin .uses.pinc  -pady 2 -padx 4 -sticky w
+  grid .uses.otp .uses.otpc  -pady 2 -padx 4 -sticky w
 
+  grid .uses -in .staging_uses
 };#/*staging_uses_attr_v16*/
 
 proc staging_tkn_attr_v16 {} {
 
-  label .staging_tkn.type  -text "Type*........."
-  label .staging_tkn.value -text "Value*........"
+  frame .tkn
+  label .tkn.type  -text "Type*........."
+  label .tkn.value -text "Value*........"
  
-  entry .staging_tkn.typee
-  entry .staging_tkn.valuee
+  entry .tkn.typee
+  entry .tkn.valuee
  
-  grid .staging_tkn.type  .staging_tkn.typee  -pady 2 -padx 4 -sticky w
-  grid .staging_tkn.value .staging_tkn.valuee -pady 2 -padx 4 -sticky w
+  grid .tkn.type  .tkn.typee  -pady 2 -padx 4 -sticky w
+  grid .tkn.value .tkn.valuee -pady 2 -padx 4 -sticky w
 
+  grid .tkn -in .staging_tkn
 };#/*staging_tkn_attr_v16*/
 
 proc staging_meta_attr_v16 {} {
 
-  label .staging_meta.udc  -text "Udc*.........."
-  label .staging_meta.fdc  -text "Fdc*.........."
-  label .staging_meta.idc  -text "Idc*.........."
-  label .staging_meta.pip  -text "Pip*.........."
-  label .staging_meta.lot  -text "Lot*.........."
-  label .staging_meta.lov  -text "Lov*.........."
+  frame .meta
+  label .meta.udc  -text "Udc*.........."
+  label .meta.fdc  -text "Fdc*.........."
+  label .meta.idc  -text "Idc*.........."
+  label .meta.pip  -text "Pip*.........."
+  label .meta.lot  -text "Lot*.........."
+  label .meta.lov  -text "Lov*.........."
  
-  entry .staging_meta.udce
-  entry .staging_meta.fdce
-  entry .staging_meta.idce
-  entry .staging_meta.pipe
-  entry .staging_meta.lote
-  entry .staging_meta.love
+  entry .meta.udce
+  entry .meta.fdce
+  entry .meta.idce
+  entry .meta.pipe
+  entry .meta.lote
+  entry .meta.love
  
-  grid .staging_meta.udc  .staging_meta.udce  -pady 2 -padx 4 -sticky w
-  grid .staging_meta.fdc  .staging_meta.fdce  -pady 2 -padx 4 -sticky w
-  grid .staging_meta.idc  .staging_meta.idce  -pady 2 -padx 4 -sticky w
-  grid .staging_meta.pip  .staging_meta.pipe  -pady 2 -padx 4 -sticky w
-  grid .staging_meta.lot  .staging_meta.lote  -pady 2 -padx 4 -sticky w
-  grid .staging_meta.lov  .staging_meta.love  -pady 2 -padx 4 -sticky w
+  grid .meta.udc  .meta.udce  -pady 2 -padx 4 -sticky w
+  grid .meta.fdc  .meta.fdce  -pady 2 -padx 4 -sticky w
+  grid .meta.idc  .meta.idce  -pady 2 -padx 4 -sticky w
+  grid .meta.pip  .meta.pipe  -pady 2 -padx 4 -sticky w
+  grid .meta.lot  .meta.lote  -pady 2 -padx 4 -sticky w
+  grid .meta.lov  .meta.love  -pady 2 -padx 4 -sticky w
 
+  grid .meta -in .staging_meta
 };#/*staging_meta_attr_v16*/
 
 proc staging_pi_attr_v16 {} {
 
-  label .staging_pi.ms     -text "Ms............"
-  label .staging_pi.mv     -text "Mv............"
-  label .staging_pi.name   -text "Name.........."
-  label .staging_pi.lname  -text "Lname........."
-  label .staging_pi.lmv    -text "Lmv..........."
-  label .staging_pi.gender -text "Gender........"
-  label .staging_pi.dob    -text "Dob..........."
-  label .staging_pi.dobt   -text "Dobt.........."
-  label .staging_pi.age    -text "Age..........."
-  label .staging_pi.phone  -text "Phone........."
-  label .staging_pi.email  -text "E-mail........"
+  frame .pi
+  label .pi.ms     -text "Ms............"
+  label .pi.mv     -text "Mv............"
+  label .pi.name   -text "Name.........."
+  label .pi.lname  -text "Lname........."
+  label .pi.lmv    -text "Lmv..........."
+  label .pi.gender -text "Gender........"
+  label .pi.dob    -text "Dob..........."
+  label .pi.dobt   -text "Dobt.........."
+  label .pi.age    -text "Age..........."
+  label .pi.phone  -text "Phone........."
+  label .pi.email  -text "E-mail........"
  
-  entry .staging_pi.mse     -width 30
-  entry .staging_pi.mve     -width 30 
-  entry .staging_pi.namee   -width 30
-  entry .staging_pi.lnamee  -width 30
-  entry .staging_pi.lmve    -width 30
-  entry .staging_pi.gendere -width 30
-  entry .staging_pi.dobe    -width 30
-  entry .staging_pi.dobte   -width 30
-  entry .staging_pi.agee    -width 30
-  entry .staging_pi.phonee  -width 30
-  entry .staging_pi.emaile  -width 30
+  entry .pi.mse     -width 30
+  entry .pi.mve     -width 30 
+  entry .pi.namee   -width 30
+  entry .pi.lnamee  -width 30
+  entry .pi.lmve    -width 30
+  entry .pi.gendere -width 30
+  entry .pi.dobe    -width 30
+  entry .pi.dobte   -width 30
+  entry .pi.agee    -width 30
+  entry .pi.phonee  -width 30
+  entry .pi.emaile  -width 30
  
-  grid .staging_pi.ms     .staging_pi.mse     -pady 2 -padx 4 -sticky news
-  grid .staging_pi.mv     .staging_pi.mve     -pady 2 -padx 4 -sticky news
-  grid .staging_pi.name   .staging_pi.namee   -pady 2 -padx 4 -sticky news
-  grid .staging_pi.lname  .staging_pi.lnamee  -pady 2 -padx 4 -sticky news
-  grid .staging_pi.lmv    .staging_pi.lmve    -pady 2 -padx 4 -sticky news
-  grid .staging_pi.gender .staging_pi.gendere -pady 2 -padx 4 -sticky news
-  grid .staging_pi.dob    .staging_pi.dobe    -pady 2 -padx 4 -sticky news
-  grid .staging_pi.dobt   .staging_pi.dobte   -pady 2 -padx 4 -sticky news
-  grid .staging_pi.age    .staging_pi.agee    -pady 2 -padx 4 -sticky news
-  grid .staging_pi.phone  .staging_pi.phonee  -pady 2 -padx 4 -sticky news
-  grid .staging_pi.email  .staging_pi.emaile  -pady 2 -padx 4 -sticky news
+  grid .pi.ms     .pi.mse     -pady 2 -padx 4 -sticky news
+  grid .pi.mv     .pi.mve     -pady 2 -padx 4 -sticky news
+  grid .pi.name   .pi.namee   -pady 2 -padx 4 -sticky news
+  grid .pi.lname  .pi.lnamee  -pady 2 -padx 4 -sticky news
+  grid .pi.lmv    .pi.lmve    -pady 2 -padx 4 -sticky news
+  grid .pi.gender .pi.gendere -pady 2 -padx 4 -sticky news
+  grid .pi.dob    .pi.dobe    -pady 2 -padx 4 -sticky news
+  grid .pi.dobt   .pi.dobte   -pady 2 -padx 4 -sticky news
+  grid .pi.age    .pi.agee    -pady 2 -padx 4 -sticky news
+  grid .pi.phone  .pi.phonee  -pady 2 -padx 4 -sticky news
+  grid .pi.email  .pi.emaile  -pady 2 -padx 4 -sticky news
 
+  grid .pi -in .staging_pi
 };#/*staging_pi_attr_v16*/
 
 proc staging_pa_attr_v16 {} {
-
-  label .staging_pa.ms        -text "Ms............"
-  label .staging_pa.co        -text "Co............"
-  label .staging_pa.house     -text "House........."
-  label .staging_pa.street    -text "Street........"
-  label .staging_pa.lm        -text "Lm............"
-  label .staging_pa.loc       -text "Loc..........."
-  label .staging_pa.vtc       -text "Vtc..........."
-  label .staging_pa.subdist   -text "Subdist......."
-  label .staging_pa.dist      -text "Dist.........."
-  label .staging_pa.state     -text "State........."
-  label .staging_pa.pc        -text "Pc............"
-  label .staging_pa.po        -text "Po............"
+  frame .pa
+  label .pa.ms        -text "Ms............"
+  label .pa.co        -text "Co............"
+  label .pa.house     -text "House........."
+  label .pa.street    -text "Street........"
+  label .pa.lm        -text "Lm............"
+  label .pa.loc       -text "Loc..........."
+  label .pa.vtc       -text "Vtc..........."
+  label .pa.subdist   -text "Subdist......."
+  label .pa.dist      -text "Dist.........."
+  label .pa.state     -text "State........."
+  label .pa.pc        -text "Pc............"
+  label .pa.po        -text "Po............"
  
-  entry .staging_pa.mse      -width 30
-  entry .staging_pa.coe      -width 30 
-  entry .staging_pa.housee   -width 30
-  entry .staging_pa.streete  -width 30
-  entry .staging_pa.lme      -width 30
-  entry .staging_pa.loce     -width 30
-  entry .staging_pa.vtce     -width 30
-  entry .staging_pa.subdiste -width 30
-  entry .staging_pa.diste    -width 30
-  entry .staging_pa.statee   -width 30
-  entry .staging_pa.pce      -width 30
-  entry .staging_pa.poe      -width 30
+  entry .pa.mse      -width 30
+  entry .pa.coe      -width 30 
+  entry .pa.housee   -width 30
+  entry .pa.streete  -width 30
+  entry .pa.lme      -width 30
+  entry .pa.loce     -width 30
+  entry .pa.vtce     -width 30
+  entry .pa.subdiste -width 30
+  entry .pa.diste    -width 30
+  entry .pa.statee   -width 30
+  entry .pa.pce      -width 30
+  entry .pa.poe      -width 30
  
-  grid .staging_pa.ms       .staging_pa.mse       -pady 2 -padx 4 -sticky news
-  grid .staging_pa.co       .staging_pa.coe       -pady 2 -padx 4 -sticky news
-  grid .staging_pa.house    .staging_pa.housee    -pady 2 -padx 4 -sticky news
-  grid .staging_pa.street   .staging_pa.streete   -pady 2 -padx 4 -sticky news
-  grid .staging_pa.lm       .staging_pa.lme       -pady 2 -padx 4 -sticky news
-  grid .staging_pa.loc      .staging_pa.loce      -pady 2 -padx 4 -sticky news
-  grid .staging_pa.vtc      .staging_pa.vtce      -pady 2 -padx 4 -sticky news
-  grid .staging_pa.subdist  .staging_pa.subdiste  -pady 2 -padx 4 -sticky news
-  grid .staging_pa.dist     .staging_pa.diste     -pady 2 -padx 4 -sticky news
-  grid .staging_pa.state    .staging_pa.statee    -pady 2 -padx 4 -sticky news
-  grid .staging_pa.pc       .staging_pa.pce       -pady 2 -padx 4 -sticky news
-  grid .staging_pa.po       .staging_pa.poe       -pady 2 -padx 4 -sticky news
+  grid .pa.ms       .pa.mse       -pady 2 -padx 4 -sticky news
+  grid .pa.co       .pa.coe       -pady 2 -padx 4 -sticky news
+  grid .pa.house    .pa.housee    -pady 2 -padx 4 -sticky news
+  grid .pa.street   .pa.streete   -pady 2 -padx 4 -sticky news
+  grid .pa.lm       .pa.lme       -pady 2 -padx 4 -sticky news
+  grid .pa.loc      .pa.loce      -pady 2 -padx 4 -sticky news
+  grid .pa.vtc      .pa.vtce      -pady 2 -padx 4 -sticky news
+  grid .pa.subdist  .pa.subdiste  -pady 2 -padx 4 -sticky news
+  grid .pa.dist     .pa.diste     -pady 2 -padx 4 -sticky news
+  grid .pa.state    .pa.statee    -pady 2 -padx 4 -sticky news
+  grid .pa.pc       .pa.pce       -pady 2 -padx 4 -sticky news
+  grid .pa.po       .pa.poe       -pady 2 -padx 4 -sticky news
 
+  grid .pa -in .staging_pa
 };#/*staging_pa_attr_v16*/
 
 proc staging_pfa_attr_v16 {} {
-
-  label .staging_pfa.ms        -text "Ms............"
-  label .staging_pfa.mv        -text "Mv............"
-  label .staging_pfa.av        -text "Av............"
-  label .staging_pfa.lav       -text "Lav..........."
-  label .staging_pfa.lmv       -text "Lmv..........."
+  frame .pfa
+  label .pfa.ms        -text "Ms............"
+  label .pfa.mv        -text "Mv............"
+  label .pfa.av        -text "Av............"
+  label .pfa.lav       -text "Lav..........."
+  label .pfa.lmv       -text "Lmv..........."
  
-  entry .staging_pfa.mse   -width 30
-  entry .staging_pfa.mve   -width 30 
-  entry .staging_pfa.ave   -width 30
-  entry .staging_pfa.lave  -width 30
-  entry .staging_pfa.lmve  -width 30
+  entry .pfa.mse   -width 30
+  entry .pfa.mve   -width 30 
+  entry .pfa.ave   -width 30
+  entry .pfa.lave  -width 30
+  entry .pfa.lmve  -width 30
  
-  grid .staging_pfa.ms    .staging_pfa.mse    -pady 2 -padx 4 -sticky news
-  grid .staging_pfa.mv    .staging_pfa.mve    -pady 2 -padx 4 -sticky news
-  grid .staging_pfa.av    .staging_pfa.ave    -pady 2 -padx 4 -sticky news
-  grid .staging_pfa.lav   .staging_pfa.lave   -pady 2 -padx 4 -sticky news
-  grid .staging_pfa.lmv   .staging_pfa.lmve   -pady 2 -padx 4 -sticky news
+  grid .pfa.ms    .pfa.mse    -pady 2 -padx 4 -sticky news
+  grid .pfa.mv    .pfa.mve    -pady 2 -padx 4 -sticky news
+  grid .pfa.av    .pfa.ave    -pady 2 -padx 4 -sticky news
+  grid .pfa.lav   .pfa.lave   -pady 2 -padx 4 -sticky news
+  grid .pfa.lmv   .pfa.lmve   -pady 2 -padx 4 -sticky news
 
+  grid .pfa -in .staging_pfa
 };#/*staging_pfa_attr_v16*/
 
 proc staging_bio_attr_v16 {} {
 
-  label .staging_bio.type  -text "Type............"
-  label .staging_bio.posh  -text "Posh............"
+  frame .bio
+  label .bio.type  -text "Type............"
+  label .bio.posh  -text "Posh............"
  
-  entry .staging_bio.typee -width 30
-  entry .staging_bio.poshe -width 30 
+  entry .bio.typee -width 30
+  entry .bio.poshe -width 30 
  
-  grid .staging_bio.type  .staging_bio.typee -pady 2 -padx 4 -sticky news
-  grid .staging_bio.posh  .staging_bio.poshe -pady 2 -padx 4 -sticky news
-
+  grid .bio.type  .bio.typee -pady 2 -padx 4 -sticky news
+  grid .bio.posh  .bio.poshe -pady 2 -padx 4 -sticky news
+  grid .bio -in .staging_bio
+ 
 };#/*staging_bio_attr_v16*/
 
 proc staging_pv_attr_v16 {} {
-
-  label .staging_pv.pin  -text "Pin............"
-  label .staging_pv.otp  -text "Otp............"
+  frame .pv
+  label .pv.pin  -text "Pin............"
+  label .pv.otp  -text "Otp............"
  
-  entry .staging_pv.pine -width 30
-  entry .staging_pv.otpe -width 30 
+  entry .pv.pine -width 30
+  entry .pv.otpe -width 30 
  
-  grid .staging_pv.pin  .staging_pv.pine    -pady 2 -padx 4 -sticky news
-  grid .staging_pv.otp  .staging_pv.otpe    -pady 2 -padx 4 -sticky news
+  grid .pv.pin  .pv.pine    -pady 2 -padx 4 -sticky news
+  grid .pv.otp  .pv.otpe    -pady 2 -padx 4 -sticky news
+  grid .pv -in .staging_pv
 
 };#/*staging_pv_attr_v16*/
 
