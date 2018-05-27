@@ -193,9 +193,11 @@ proc default_contents {type version} {
   if {"staging" == $type} {
 
     if {"1.6" == $version} {
-      puts "Staging Version $version"
-      global staging_uses_pic
-      puts "checkbutton $staging_uses_pic"
+     staging_set_default_auth_v16
+     staging_set_default_uses_v16
+     staging_uses_opt_enable "pic"
+     staging_set_default_meta_v16 
+
     } elseif {"2.0" == $version} { 
       
     }
@@ -207,7 +209,11 @@ proc clear_contents {type version} {
   if {"staging" == $type} {
 
     if {"1.6" == $version} {
-      puts "Staging Version $version"       
+      staging_clear_auth_v16
+      staging_clear_uses_v16
+      staging_uses_opt_disable "pic"
+      staging_clear_meta_v16 
+
     } elseif {"2.0" == $version} { 
       
     }
@@ -251,7 +257,7 @@ proc btn_widget {f_name type version} {
 # */
 proc init_frame {f_name} {
   frame .$f_name
-  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" -width 1100 -height 750 
+  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" -width 1140 -height 750 
   scrollbar .xscroll -orient horizontal -command ".canvas xview"
   scrollbar .yscroll -orient vertical -command ".canvas yview"
 

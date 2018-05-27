@@ -36,13 +36,13 @@ proc staging_auth_attr_v16 {} {
   label .auth.ver  -text "ver............"
   label .auth.lk   -text "lk............."
  
-  entry .auth.uide  -width 30
-  entry .auth.tide  -width 30 
-  entry .auth.txne  -width 30
-  entry .auth.ace   -width 30
-  entry .auth.sae   -width 30
-  entry .auth.vere  -width 30
-  entry .auth.lke   -width 30
+  entry .auth.uide  -width 30 -textvariable staging_auth_v16_uide
+  entry .auth.tide  -width 30 -textvariable staging_auth_v16_tide
+  entry .auth.txne  -width 30 -textvariable staging_auth_v16_txne
+  entry .auth.ace   -width 30 -textvariable staging_auth_v16_ace
+  entry .auth.sae   -width 30 -textvariable staging_auth_v16_sae
+  entry .auth.vere  -width 30 -textvariable staging_auth_v16_vere
+  entry .auth.lke   -width 30 -textvariable staging_auth_v16_lke
  
   grid .auth.uid  .auth.uide  -pady 2 -padx 4 -sticky news
   grid .auth.tid  .auth.tide  -pady 2 -padx 4 -sticky news
@@ -65,12 +65,12 @@ proc staging_uses_attr_v16 {} {
   label .uses.pv   -text "Pv............."
   label .uses.demo -text "Demo..........."
  
-  checkbutton .uses.pic   -variable staging_uses_pic   -command {staging_uses_opt pic   $staging_uses_pic}
+  checkbutton .uses.pic   -variable staging_uses_pic   -command {staging_uses_opt pic   $staging_uses_pic} 
   checkbutton .uses.pac   -variable staging_uses_pac   -command {staging_uses_opt pac   $staging_uses_pac}
   checkbutton .uses.pfac  -variable staging_uses_pfac  -command {staging_uses_opt pfac  $staging_uses_pfac}
   checkbutton .uses.bioc  -variable staging_uses_bioc  -command {staging_uses_opt bioc  $staging_uses_bioc}
   checkbutton .uses.pvc   -variable staging_uses_pvc   -command {staging_uses_opt pvc   $staging_uses_pvc}
-  checkbutton .uses.democ -variable staging_uses_democ -command {staging_uses_opt democ $staging_uses_pvc}
+  checkbutton .uses.democ -variable staging_uses_democ -command {staging_uses_opt democ $staging_uses_democ}
  
   grid .uses.pi    .uses.pic   -pady 2 -padx 4 -sticky news 
   grid .uses.pa    .uses.pac   -pady 2 -padx 4 -sticky news
@@ -107,12 +107,12 @@ proc staging_meta_attr_v16 {} {
   label .meta.lot  -text "Lot*..........."
   label .meta.lov  -text "Lov*..........."
  
-  entry .meta.udce -width 30
-  ComboBox .meta.fdce -width 30 -values {NC NA} -text "NC"
-  entry .meta.idce -width 30
-  entry .meta.pipe -width 30
+  entry .meta.udce -width 30 -textvariable staging_meta_v16_udce
+  ComboBox .meta.fdce -width 30 -values {NC NA} -text "NA"
+  entry .meta.idce -width 30 -textvariable staging_meta_v16_idce
+  entry .meta.pipe -width 30 -textvariable staging_meta_v16_pipe
   ComboBox .meta.lote -width 30 -values {G P} -text "P"
-  entry .meta.love -width 30
+  entry .meta.love -width 30 -textvariable staging_meta_v16_love
  
   grid .meta.udc  .meta.udce  -pady 2 -padx 4 -sticky news
   grid .meta.fdc  .meta.fdce  -pady 2 -padx 4 -sticky news
@@ -125,7 +125,9 @@ proc staging_meta_attr_v16 {} {
 };#/*staging_meta_attr_v16*/
 
 proc staging_pi_attr_v16 {} {
+  global staging_pi_mve_v16
 
+  set staging_pi_mve_v16 "100"
   frame .pi
   label .pi.ms     -text "Ms............."
   label .pi.mv     -text "Mv............."
@@ -140,7 +142,7 @@ proc staging_pi_attr_v16 {} {
   label .pi.email  -text "E-mail........."
  
   ComboBox .pi.mse  -width 30 -values {P E} -text "E"
-  entry .pi.mve     -width 30 -text "100"
+  entry .pi.mve     -width 30 -textvariable  staging_pi_mve_v16
   entry .pi.namee   -width 30
   entry .pi.lnamee  -width 30
   entry .pi.lmve    -width 30
@@ -397,3 +399,71 @@ proc staging_uses_opt {chk_btn chk_selected} {
   }
 
 };#staging_uses_opt
+
+proc staging_set_default_auth_v16 {} {
+  global staging_auth_v16_sae
+  global staging_auth_v16_ace
+  global staging_auth_v16_tide
+  global staging_auth_v16_vere
+  global staging_auth_v16_txne
+  
+  set staging_auth_v16_sae "public"
+  set staging_auth_v16_ace "public"
+  set staging_auth_v16_tide "public"
+  set staging_auth_v16_vere "1.6"
+  set staging_auth_v16_txne "TXN:DemoStaging"
+  
+};#/*staging_set_default_auth_v16*/
+
+proc staging_set_default_uses_v16 {} {
+  .uses.pic select
+
+};#/*staging_set_default_uses_v16*/
+
+proc staging_set_default_meta_v16 {} {
+  global staging_meta_v16_udce
+  global staging_meta_v16_fdce
+  global staging_meta_v16_idce
+  global staging_meta_v16_pipe
+  global staging_meta_v16_love
+
+  set staging_meta_v16_udce "Balaagh"
+  set staging_meta_v16_fdce "NA"
+  set staging_meta_v16_idce "NA"
+  set staging_meta_v16_pipe "NA"
+  set staging_meta_v16_love "500052"
+};#/*staging_set_default_meta_v16*/
+
+proc staging_clear_auth_v16 {} {
+  global staging_auth_v16_sae
+  global staging_auth_v16_ace
+  global staging_auth_v16_tide
+  global staging_auth_v16_vere
+  global staging_auth_v16_txne
+  
+  set staging_auth_v16_sae ""
+  set staging_auth_v16_ace ""
+  set staging_auth_v16_tide ""
+  set staging_auth_v16_vere ""
+  set staging_auth_v16_txne ""
+  
+};#/*staging_clear_auth_v16*/
+
+proc staging_clear_uses_v16 {} {
+  .uses.pic deselect
+
+};#/*staging_clear_uses_v16*/
+
+proc staging_clear_meta_v16 {} {
+  global staging_meta_v16_udce
+  global staging_meta_v16_fdce
+  global staging_meta_v16_idce
+  global staging_meta_v16_pipe
+  global staging_meta_v16_love
+
+  set staging_meta_v16_udce ""
+  set staging_meta_v16_fdce ""
+  set staging_meta_v16_idce ""
+  set staging_meta_v16_pipe ""
+  set staging_meta_v16_love ""
+};#/*staging_clear_meta_v16*/
