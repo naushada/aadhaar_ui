@@ -193,7 +193,9 @@ proc default_contents {type version} {
   if {"staging" == $type} {
 
     if {"1.6" == $version} {
-      puts "Staging Version $version"       
+      puts "Staging Version $version"
+      global staging_uses_pic
+      puts "checkbutton $staging_uses_pic"
     } elseif {"2.0" == $version} { 
       
     }
@@ -396,3 +398,21 @@ wm title . "Balaagh"
 menu .m
 . configure -menu .m -height 500 -width 1200
 build_menu $menu_b .m
+
+
+#bind . <1> {
+#  set iX0 [expr %X-[winfo rootx .]]
+#  set iY0 [expr %Y-[winfo rooty .]]
+#  set bMoved 0
+#}
+
+#bind . <B1-Motion> {
+#  wm geometry . +[expr %X-$iX0]+[expr %Y-$iY0]
+#  set bMoved 1
+#}
+
+#bind . <ButtonRelease-1> {
+#  if { $bMoved } break
+#}
+
+

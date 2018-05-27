@@ -16,7 +16,7 @@ set staging_wi_pname_v16 {
   {uses.pic uses.pac uses.pfac uses.bioc uses.btc uses.pinc uses.otpc}
   {tkn.typee tkn.valuee}
   {meta.udce meta.fdce meta.idce meta.pipe meta.lote meta.love}
-  {pi.mse pi.mve pi.namee pi.lnamee pi.lmve pi.gendere pi.dobe pi.agee pi.phonee pi.emaile}
+  {pi.mse pi.mve pi.namee pi.lnamee pi.lmve pi.gendere pi.dobe pi.dobte pi.agee pi.phonee pi.emaile}
   {pa.mse pa.coe pa.housee pa.streete pa.lme pa.loce pa.vtce pa.subdiste pa.diste pa.statee pa.pce pa.poe}
   {pfa.mse pfa.mve pfa.ave pfa.lave pfa.lmve}
   {bio.typee bio.poshe}
@@ -58,29 +58,26 @@ proc staging_auth_attr_v16 {} {
 proc staging_uses_attr_v16 {} {
 
   frame .uses
-  label .uses.pi  -text "Pi............."
-  label .uses.pa  -text "Pa............."
-  label .uses.pfa -text "Pfa............"
-  label .uses.bio -text "Bio............"
-  label .uses.bt  -text "BT............."
-  label .uses.pin -text "Pin............"
-  label .uses.otp -text "Otp............"
+  label .uses.pi   -text "Pi............."
+  label .uses.pa   -text "Pa............."
+  label .uses.pfa  -text "Pfa............"
+  label .uses.bio  -text "Bio............"
+  label .uses.pv   -text "Pv............."
+  label .uses.demo -text "Demo..........."
  
-  checkbutton .uses.pic
-  checkbutton .uses.pac
-  checkbutton .uses.pfac
-  checkbutton .uses.bioc
-  checkbutton .uses.btc
-  checkbutton .uses.pinc
-  checkbutton .uses.otpc
+  checkbutton .uses.pic   -variable staging_uses_pic   -command {staging_uses_opt pic   $staging_uses_pic}
+  checkbutton .uses.pac   -variable staging_uses_pac   -command {staging_uses_opt pac   $staging_uses_pac}
+  checkbutton .uses.pfac  -variable staging_uses_pfac  -command {staging_uses_opt pfac  $staging_uses_pfac}
+  checkbutton .uses.bioc  -variable staging_uses_bioc  -command {staging_uses_opt bioc  $staging_uses_bioc}
+  checkbutton .uses.pvc   -variable staging_uses_pvc   -command {staging_uses_opt pvc   $staging_uses_pvc}
+  checkbutton .uses.democ -variable staging_uses_democ -command {staging_uses_opt democ $staging_uses_pvc}
  
-  grid .uses.pi  .uses.pic   -pady 2 -padx 4 -sticky news 
-  grid .uses.pa  .uses.pac   -pady 2 -padx 4 -sticky news
-  grid .uses.pfa .uses.pfac  -pady 2 -padx 4 -sticky news
-  grid .uses.bio .uses.bioc  -pady 2 -padx 4 -sticky news
-  grid .uses.bt  .uses.btc   -pady 2 -padx 4 -sticky news
-  grid .uses.pin .uses.pinc  -pady 2 -padx 4 -sticky news
-  grid .uses.otp .uses.otpc  -pady 2 -padx 4 -sticky news
+  grid .uses.pi    .uses.pic   -pady 2 -padx 4 -sticky news 
+  grid .uses.pa    .uses.pac   -pady 2 -padx 4 -sticky news
+  grid .uses.pfa   .uses.pfac  -pady 2 -padx 4 -sticky news
+  grid .uses.bio   .uses.bioc  -pady 2 -padx 4 -sticky news
+  grid .uses.pv    .uses.pvc   -pady 2 -padx 4 -sticky news
+  grid .uses.demo  .uses.democ -pady 2 -padx 4 -sticky news
 
   grid .uses -in .staging_uses
 };#/*staging_uses_attr_v16*/
@@ -167,6 +164,8 @@ proc staging_pi_attr_v16 {} {
   grid .pi.email  .pi.emaile  -pady 2 -padx 4 -sticky news
 
   grid .pi -in .staging_pi
+  #;/*Disable the entry for Pi Dempgraphic data*/
+  staging_uses_opt pic  0
 };#/*staging_pi_attr_v16*/
 
 proc staging_pa_attr_v16 {} {
@@ -211,6 +210,9 @@ proc staging_pa_attr_v16 {} {
   grid .pa.po       .pa.poe       -pady 2 -padx 4 -sticky news
 
   grid .pa -in .staging_pa
+
+  #;/*Disable the entry for Pa Dempgraphic data*/
+  staging_uses_opt pac  0
 };#/*staging_pa_attr_v16*/
 
 proc staging_pfa_attr_v16 {} {
@@ -221,7 +223,6 @@ proc staging_pfa_attr_v16 {} {
   label .pfa.lav       -text "Lav............"
   label .pfa.lmv       -text "Lmv............"
  
-  #entry .pfa.mse   -width 30
   ComboBox .pfa.mse   -width 30 -values {E P} -text "E"
   entry .pfa.mve   -width 30 
   entry .pfa.ave   -width 30
@@ -235,6 +236,8 @@ proc staging_pfa_attr_v16 {} {
   grid .pfa.lmv   .pfa.lmve   -pady 2 -padx 4 -sticky news
 
   grid .pfa -in .staging_pfa
+  #;/*Disable the entry for Pfa Dempgraphic data*/
+  staging_uses_opt pfac  0
 };#/*staging_pfa_attr_v16*/
 
 proc staging_bio_attr_v16 {} {
@@ -254,6 +257,8 @@ proc staging_bio_attr_v16 {} {
   grid .bio.posh  .bio.poshe -pady 2 -padx 4 -sticky news
   grid .bio -in .staging_bio
  
+  #;/*Disable the entry for bio Dempgraphic data*/
+  staging_uses_opt bioc  0
 };#/*staging_bio_attr_v16*/
 
 proc staging_pv_attr_v16 {} {
@@ -268,6 +273,8 @@ proc staging_pv_attr_v16 {} {
   grid .pv.otp  .pv.otpe    -pady 2 -padx 4 -sticky news
   grid .pv -in .staging_pv
 
+  #;/*Disable the entry for Pv Dempgraphic data*/
+  staging_uses_opt pvc  0
 };#/*staging_pv_attr_v16*/
 
 proc staging_demo_attr_v16 {} {
@@ -289,12 +296,13 @@ proc staging_demo_attr_v16 {} {
   frame .demo
   label .demo.lang  -text "Language......."
  
-  #entry .demo.lange -width 30
   ComboBox .demo.lange -values $lang_opt -modifycmd {staging_demo_lang_get .demo.lange} -width 30 
  
   grid .demo.lang  .demo.lange    -pady 2 -padx 4 -sticky news
   grid .demo -in .staging_demo
 
+  #;/*Disable the entry for Democ Dempgraphic data*/
+  staging_uses_opt democ  0
 };#/*staging_demo_attr_v16*/
 
 proc staging_demo_lang_get {p_name} {
@@ -317,3 +325,75 @@ proc staging_demo_lang_get {p_name} {
   set val [$p_name get] 
   puts "Value is $val"
 };#/*staging_demo_lang_get*/
+
+proc staging_uses_opt_disable {uses_opt} {
+  global staging_wi_pname_v16
+
+  if {$uses_opt == "pic"} {
+    set demo_list [lindex $staging_wi_pname_v16 4]
+  } elseif {$uses_opt == "pac"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 5]
+  } elseif {$uses_opt == "pfac"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 6]
+  } elseif {$uses_opt == "bioc"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 7]
+  } elseif {$uses_opt == "pvc"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 8]
+  } elseif {$uses_opt == "democ"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 9]
+  } else {
+    #;/*Invalid Option*/
+  }
+
+  foreach pi $demo_list {
+    .$pi configure -state disabled
+  }
+};#/*staging_uses_opt_disable*/
+
+proc staging_uses_opt_enable {uses_opt} {
+  global staging_wi_pname_v16
+
+  if {$uses_opt == "pic"} {
+    set demo_list [lindex $staging_wi_pname_v16 4]
+  } elseif {$uses_opt == "pac"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 5]
+  } elseif {$uses_opt == "pfac"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 6]
+  } elseif {$uses_opt == "bioc"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 7]
+  } elseif {$uses_opt == "pvc"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 8]
+  } elseif {$uses_opt == "democ"} {
+
+    set demo_list [lindex $staging_wi_pname_v16 9]
+  } else {
+    #;/*Invalid Option*/
+  }
+
+  foreach pi $demo_list {
+    .$pi configure -state normal
+  }
+
+};#/*staging_uses_opt_enable*/
+
+proc staging_uses_opt {chk_btn chk_selected} {
+
+  if {$chk_selected == 1} {
+    #/*Enable the Pi entry*/
+    staging_uses_opt_enable $chk_btn 
+
+  } else {
+    #/*Disable the Pi Entry*/
+    staging_uses_opt_disable $chk_btn
+  }
+
+};#staging_uses_opt
