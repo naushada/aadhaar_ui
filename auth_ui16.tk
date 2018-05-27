@@ -88,7 +88,8 @@ proc staging_tkn_attr_v16 {} {
   label .tkn.type  -text "Type*.........."
   label .tkn.value -text "Value*........."
  
-  entry .tkn.typee -width 30
+  #entry .tkn.typee -width 30
+  ComboBox .tkn.typee -width 30 -values {"Mobile Number" "NA"} -text "NA"
   entry .tkn.valuee -width 30
  
   grid .tkn.type  .tkn.typee  -pady 2 -padx 4 -sticky news
