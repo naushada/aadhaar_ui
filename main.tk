@@ -76,6 +76,7 @@ proc staging_auth {version} {
   staging_bio_form  container $version
   staging_pv_form   container $version
   staging_demo_form container $version
+  staging_uidai_form container $version
   btn_widget container staging $version
 
 };#/*staging_auth*/
@@ -139,6 +140,16 @@ proc staging_demo_form {f_name version} {
     staging_demo_attr_v16
   }
 };#/*staging_demo_form*/
+
+proc staging_uidai_form {f_name version} {
+
+  labelframe .staging_uidai -text "Uidai Host (Attributes)"
+  grid .staging_uidai -sticky news -pady 2 -padx 1 -row 3 -column 1 -in .$f_name
+
+  if {$version == "1.6"} {
+    staging_uidai_server
+  }
+};#/*staging_uidai_form*/
 
 
 proc staging_auth_form {f_name version} {

@@ -308,6 +308,25 @@ proc staging_demo_attr_v16 {} {
   staging_uses_opt democ  0
 };#/*staging_demo_attr_v16*/
 
+proc staging_uidai_server {} {
+
+  global uidai_host_name
+  set uri_val {/uidauth/1.6 /auth /auth2.5}
+  set uidai_host_name "developer.uidai.gov.in"
+  frame .uidai
+  label .uidai.uri   -text "Uri............"
+  label .uidai.host  -text "Host............"
+ 
+  ComboBox .uidai.urie -values $uri_val -width 30 -text [lindex $uri_val 0] 
+  entry .uidai.hoste -width 30 -textvariable uidai_host_name
+  
+ 
+  grid .uidai.uri  .uidai.urie    -pady 2 -padx 4 -sticky news
+  grid .uidai.host .uidai.hoste  -pady 2 -padx 4 -sticky news
+  grid .uidai -in .staging_uidai
+
+};#/*staging_uidai_server*/
+
 proc staging_demo_lang_get {p_name} {
 
   set lang_opt { {Assamese   01}
