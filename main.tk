@@ -83,7 +83,7 @@ proc staging_auth {version} {
 proc staging_pi_form {f_name version} {
 
   labelframe .staging_pi -text "Pi (Attributes)"
-  grid .staging_pi -sticky news -pady 8 -padx 9 -row 1 -column 1 -in .$f_name
+  grid .staging_pi -sticky news -pady 2 -padx 1 -row 1 -column 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pi_attr_v16
@@ -93,7 +93,7 @@ proc staging_pi_form {f_name version} {
 proc staging_pa_form {f_name version} {
 
   labelframe .staging_pa -text "Pa (Attributes)"
-  grid .staging_pa -sticky news -pady 8 -padx 9 -row 1 -column 2 -in .$f_name
+  grid .staging_pa -sticky news -pady 2 -padx 1 -row 1 -column 2 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pa_attr_v16
@@ -103,7 +103,7 @@ proc staging_pa_form {f_name version} {
 proc staging_pfa_form {f_name version} {
 
   labelframe .staging_pfa -text "Pfa (Attributes)"
-  grid .staging_pfa -sticky news -pady 8 -padx 9 -row 2 -column 0 -in .$f_name
+  grid .staging_pfa -sticky news -pady 2 -padx 1 -row 2 -column 0 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pfa_attr_v16
@@ -113,7 +113,7 @@ proc staging_pfa_form {f_name version} {
 proc staging_bio_form {f_name version} {
 
   labelframe .staging_bio -text "Bio (Attributes)"
-  grid .staging_bio -sticky news -pady 8 -padx 9 -row 2 -column 1 -in .$f_name
+  grid .staging_bio -sticky news -pady 2 -padx 1 -row 2 -column 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_bio_attr_v16
@@ -123,7 +123,7 @@ proc staging_bio_form {f_name version} {
 proc staging_pv_form {f_name version} {
 
   labelframe .staging_pv -text "Pv (Attributes)"
-  grid .staging_pv -sticky news -pady 8 -padx 9 -row 2 -column 2 -in .$f_name
+  grid .staging_pv -sticky news -pady 2 -padx 1 -row 2 -column 2 -in .$f_name
 
   if {$version == "1.6"} {
     staging_pv_attr_v16
@@ -133,7 +133,7 @@ proc staging_pv_form {f_name version} {
 proc staging_demo_form {f_name version} {
 
   labelframe .staging_demo -text "Demo (Attributes)"
-  grid .staging_demo -sticky news -pady 8 -padx 9 -row 3 -column 0 -in .$f_name
+  grid .staging_demo -sticky news -pady 2 -padx 1 -row 3 -column 0 -in .$f_name
 
   if {$version == "1.6"} {
     staging_demo_attr_v16
@@ -143,7 +143,7 @@ proc staging_demo_form {f_name version} {
 
 proc staging_auth_form {f_name version} {
   labelframe .staging_auth -text "Auth* (Attributes)"
-  grid .staging_auth -sticky news -row 0 -column 0 -pady 8 -padx 9 -in .$f_name
+  grid .staging_auth -sticky news -row 0 -column 0 -pady 2 -padx 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_auth_attr_v16
@@ -160,7 +160,7 @@ proc staging_auth_form {f_name version} {
 
 proc staging_uses_form {f_name version} {
   labelframe .staging_uses -text "Uses* (Attributes)"
-  grid .staging_uses -sticky news -row 0 -column 1 -row 0 -pady 8 -padx 9 -in .$f_name
+  grid .staging_uses -sticky news -row 0 -column 1 -row 0 -pady 2 -padx 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_uses_attr_v16
@@ -170,7 +170,7 @@ proc staging_uses_form {f_name version} {
 
 proc staging_tkn_form {f_name version} {
   labelframe .staging_tkn -text "Tkn (Attributes)"
-  grid .staging_tkn -sticky news -row 0 -column 2 -row 0 -pady 8 -padx 9 -in .$f_name
+  grid .staging_tkn -sticky news -row 0 -column 2 -row 0 -pady 2 -padx 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_tkn_attr_v16
@@ -180,7 +180,7 @@ proc staging_tkn_form {f_name version} {
 
 proc staging_meta_form {f_name version} {
   labelframe .staging_meta -text "Meta* (Attributes)"
-  grid .staging_meta -sticky news -column 0 -row 1 -pady 8 -padx 9 -in .$f_name
+  grid .staging_meta -sticky news -column 0 -row 1 -pady 2 -padx 1 -in .$f_name
 
   if {$version == "1.6"} {
     staging_meta_attr_v16
@@ -202,7 +202,7 @@ proc default_contents {type version} {
       
     }
   }
-};#default_contents
+};#/*default_contents*/
 
 proc clear_contents {type version} {
 
@@ -212,20 +212,26 @@ proc clear_contents {type version} {
       staging_clear_auth_v16
       staging_clear_uses_v16
       staging_uses_opt_disable "pic"
+      staging_uses_opt_disable "pac"
+      staging_uses_opt_disable "pfac"
+      staging_uses_opt_disable "bioc"
+      staging_uses_opt_disable "pvc"
+      staging_uses_opt_disable "democ"
       staging_clear_meta_v16 
 
     } elseif {"2.0" == $version} { 
       
     }
   }
-};#clear_contents
+};#/*clear_contents*/
 
 proc submit_contents {type version} {
 
   if {"staging" == $type} {
 
     if {"1.6" == $version} {
-      puts "Staging Version $version"       
+      puts "Staging Version $version"
+      staging_retrieve_value_v16    
     } elseif {"2.0" == $version} { 
       
     }
@@ -236,7 +242,6 @@ proc btn_widget {f_name type version} {
 
   frame .btn_frame
   labelframe .lbl_frame -text "Command"
-  #grid .lbl_frame -sticky news -column 0 -row 5 -padx 9 -pady 8 -in .btn_frame
 
   button .clear -text "Clear" -command "clear_contents $type $version"
   button .default -text "Set Default Value" -command "default_contents $type $version"
@@ -257,7 +262,7 @@ proc btn_widget {f_name type version} {
 # */
 proc init_frame {f_name} {
   frame .$f_name
-  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" -width 1140 -height 750 
+  canvas .canvas -xscrollcommand ".xscroll set" -yscrollcommand ".yscroll set" -width 1140 -height 750  
   scrollbar .xscroll -orient horizontal -command ".canvas xview"
   scrollbar .yscroll -orient vertical -command ".canvas yview"
 

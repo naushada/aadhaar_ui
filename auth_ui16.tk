@@ -13,7 +13,7 @@ package require BWidget
 
 set staging_wi_pname_v16 {
   {auth.uide auth.tide auth.txne auth.ace auth.sae auth.vere auth.lke}
-  {uses.pic uses.pac uses.pfac uses.bioc uses.btc uses.pinc uses.otpc}
+  {uses.pic uses.pac uses.pfac uses.bioc uses.pvc uses.democ}
   {tkn.typee tkn.valuee}
   {meta.udce meta.fdce meta.idce meta.pipe meta.lote meta.love}
   {pi.mse pi.mve pi.namee pi.lnamee pi.lmve pi.gendere pi.dobe pi.dobte pi.agee pi.phonee pi.emaile}
@@ -399,7 +399,7 @@ proc staging_uses_opt {chk_btn chk_selected} {
     staging_uses_opt_disable $chk_btn
   }
 
-};#staging_uses_opt
+};#i/8staging_uses_opt*/
 
 proc staging_set_default_auth_v16 {} {
   global staging_auth_v16_sae
@@ -451,7 +451,12 @@ proc staging_clear_auth_v16 {} {
 };#/*staging_clear_auth_v16*/
 
 proc staging_clear_uses_v16 {} {
-  .uses.pic deselect
+  global staging_wi_pname_v16 
+  set pname [lindex $staging_wi_pname_v16 1]
+
+  foreach val $pname {
+    .$val deselect
+  } 
 
 };#/*staging_clear_uses_v16*/
 
@@ -468,3 +473,252 @@ proc staging_clear_meta_v16 {} {
   set staging_meta_v16_pipe ""
   set staging_meta_v16_love ""
 };#/*staging_clear_meta_v16*/
+
+proc staging_get_tkn_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {type value}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "tkn={$str}"
+  return $str
+
+};#/*staging_get_tkn_attr_value*/
+
+proc staging_get_meta_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {udc fdc idc pip lot lov}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "meta={$str}"
+  return $str
+
+};#/*staging_get_meta_attr_value*/
+
+
+proc staging_get_auth_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set auth_arg {uid tid txn ac sa ver lk}
+  set idx 0
+  set auth_str ""
+  set auth_attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $auth_attr {
+   set auth_str [concat $auth_str [lindex $auth_arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set auth_str [regsub -all {\s+} $auth_str ,]
+  set auth_str "auth={$auth_str}"
+  return $auth_str
+
+};#/*staging_get_auth_attr_value*/
+
+proc staging_get_uses_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  global staging_uses_selected
+
+  set arg {pi pa pfa bio pv demo}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set var [.$val cget -variable]
+   global $var
+   set str [concat $str [lindex $arg $idx]=[subst $$var]]
+   incr idx
+  }
+  
+  set staging_uses_selected $str
+  set str [regsub -all {\s+} $str ,]
+
+  set staging_uses_selected [regsub -all {=} $staging_uses_selected " == "]
+  set str "uses={$str}"
+  return $str
+
+};#/*staging_get_uses_attr_value*/
+
+proc staging_get_pi_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {ms mv name lname lmv gender dob dobt age phone email}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "pi={$str}"
+  return $str
+
+};#/*staging_get_pi_attr_value*/
+
+proc staging_get_pa_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {ms co house street lm loc vtc subdist dist state pc po}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "pa={$str}"
+  return $str
+};#/*staging_get_pa_attr_value*/
+
+proc staging_get_pfa_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {ms mv av lav lmv}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "pfa={$str}"
+  return $str
+};#/*staging_get_pfa_attr_value*/
+
+proc staging_get_bio_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {type posh}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "bio={$str}"
+  return $str
+
+};#/*staging_get_bio_attr_value*/
+
+proc staging_get_pv_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {pin otp}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "pv={$str}"
+  return $str
+
+};#/*staging_get_pv_attr_value*/
+
+proc staging_get_demo_attr_value {offset} {
+
+  global staging_wi_pname_v16 
+  set arg {lang}
+  set idx 0
+  set str ""
+  set attr [lindex $staging_wi_pname_v16 $offset]
+
+  foreach val $attr {
+   set str [concat $str [lindex $arg $idx]=[.$val get]]
+   incr idx
+  }
+
+  set str [regsub -all {\s+} $str ,]
+  set str "demo={$str}"
+  return $str
+
+};#/*staging_get_demo_attr_value*/
+
+proc staging_retrieve_value_v16 {} {
+
+  global staging_uses_selected
+
+  set auth [staging_get_auth_attr_value 0]
+  puts "Auth Req $auth"
+  set uses [staging_get_uses_attr_value 1]
+  puts "Uses Value $uses"
+  set tkn [staging_get_tkn_attr_value 2]
+  puts "tkn $tkn"
+  set meta [staging_get_meta_attr_value 3]
+  puts "meta $meta"
+
+  #/*Prepare the request*/
+  set REQ "stage=staging&request=auth&$auth&$uses&$tkn&$meta"
+  foreach {var op val} $staging_uses_selected {
+    if {$var == "pi" && $val == 1} {
+      #/*Pi is selected*/
+      set pi [staging_get_pi_attr_value 4] 
+      puts "pi $pi" 
+      set REQ "$REQ&$pi"
+      puts "REQ $REQ"
+
+    } elseif {$var == "pa" && $val == 1} {
+      #/*Pa is selected*/
+      set pa [staging_get_pa_attr_value 5] 
+      set REQ "$REQ&$pa"
+    
+    } elseif {$var == "pfa" && $val == 1} {
+      #/*pfa is selected*/
+      set pfa [staging_get_pfa_attr_value 6] 
+      set REQ "$REQ&$pfa"
+
+    } elseif {$var == "bio" && $val == 1} {
+      #/*bio is selected*/
+      set bio [staging_get_bio_attr_value 7] 
+      set REQ "$REQ&$bio"
+
+    } elseif {$var == "pv" && $val == 1} {
+      #/*Pv is selected*/
+      set pv [staging_get_pv_attr_value 8] 
+      set REQ "$REQ&$pv"
+
+    } elseif {$var == "demo" && $val == 1} {
+      #/*demo is selected*/
+      set demo [staging_get_demo_attr_value 9] 
+      set REQ "$REQ&$demo"
+    }
+  }
+
+  puts "Final REQ $REQ"
+};#/*staging_retrieve_value_v16*/
